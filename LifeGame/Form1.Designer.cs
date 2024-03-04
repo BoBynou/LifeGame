@@ -38,9 +38,12 @@ namespace LifeGame
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.swfdgvDataGrid = new System.Windows.Forms.DataGridView();
-            this.swfbStop = new System.Windows.Forms.Button();
             this.swfbStart = new System.Windows.Forms.Button();
+            this.swfbStop = new System.Windows.Forms.Button();
+            this.swfdgvDataGrid = new System.Windows.Forms.DataGridView();
+            this.swftbChat = new System.Windows.Forms.TextBox();
+            this.swftbMessage = new System.Windows.Forms.TextBox();
+            this.swfbSendMessage = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -137,6 +140,9 @@ namespace LifeGame
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.swfbSendMessage);
+            this.tabPage2.Controls.Add(this.swftbMessage);
+            this.tabPage2.Controls.Add(this.swftbChat);
             this.tabPage2.Controls.Add(this.swfbStart);
             this.tabPage2.Controls.Add(this.swfbStop);
             this.tabPage2.Controls.Add(this.swfdgvDataGrid);
@@ -147,6 +153,28 @@ namespace LifeGame
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // swfbStart
+            // 
+            this.swfbStart.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.swfbStart.Location = new System.Drawing.Point(894, 573);
+            this.swfbStart.Name = "swfbStart";
+            this.swfbStart.Size = new System.Drawing.Size(75, 32);
+            this.swfbStart.TabIndex = 3;
+            this.swfbStart.Text = "Start";
+            this.swfbStart.UseVisualStyleBackColor = true;
+            this.swfbStart.Click += new System.EventHandler(this.swfbStart_Click);
+            // 
+            // swfbStop
+            // 
+            this.swfbStop.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.swfbStop.Location = new System.Drawing.Point(975, 573);
+            this.swfbStop.Name = "swfbStop";
+            this.swfbStop.Size = new System.Drawing.Size(75, 32);
+            this.swfbStop.TabIndex = 2;
+            this.swfbStop.Text = "Stop";
+            this.swfbStop.UseVisualStyleBackColor = true;
+            this.swfbStop.Click += new System.EventHandler(this.swfbStop_Click);
             // 
             // swfdgvDataGrid
             // 
@@ -165,31 +193,36 @@ namespace LifeGame
             this.swfdgvDataGrid.RowHeadersVisible = false;
             this.swfdgvDataGrid.RowHeadersWidth = 51;
             this.swfdgvDataGrid.RowTemplate.Height = 24;
-            this.swfdgvDataGrid.Size = new System.Drawing.Size(1294, 564);
+            this.swfdgvDataGrid.Size = new System.Drawing.Size(1047, 564);
             this.swfdgvDataGrid.TabIndex = 0;
             this.swfdgvDataGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.swfdgvDataGrid_CellClick);
             // 
-            // swfbStop
+            // swftbChat
             // 
-            this.swfbStop.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.swfbStop.Location = new System.Drawing.Point(1219, 573);
-            this.swfbStop.Name = "swfbStop";
-            this.swfbStop.Size = new System.Drawing.Size(75, 32);
-            this.swfbStop.TabIndex = 2;
-            this.swfbStop.Text = "Stop";
-            this.swfbStop.UseVisualStyleBackColor = true;
-            this.swfbStop.Click += new System.EventHandler(this.swfbStop_Click);
+            this.swftbChat.Location = new System.Drawing.Point(1056, 6);
+            this.swftbChat.Multiline = true;
+            this.swftbChat.Name = "swftbChat";
+            this.swftbChat.Size = new System.Drawing.Size(238, 471);
+            this.swftbChat.TabIndex = 4;
             // 
-            // swfbStart
+            // swftbMessage
             // 
-            this.swfbStart.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.swfbStart.Location = new System.Drawing.Point(1138, 573);
-            this.swfbStart.Name = "swfbStart";
-            this.swfbStart.Size = new System.Drawing.Size(75, 32);
-            this.swfbStart.TabIndex = 3;
-            this.swfbStart.Text = "Start";
-            this.swfbStart.UseVisualStyleBackColor = true;
-            this.swfbStart.Click += new System.EventHandler(this.swfbStart_Click);
+            this.swftbMessage.Location = new System.Drawing.Point(1056, 483);
+            this.swftbMessage.Multiline = true;
+            this.swftbMessage.Name = "swftbMessage";
+            this.swftbMessage.Size = new System.Drawing.Size(238, 84);
+            this.swftbMessage.TabIndex = 5;
+            // 
+            // swfbSendMessage
+            // 
+            this.swfbSendMessage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.swfbSendMessage.Location = new System.Drawing.Point(1219, 573);
+            this.swfbSendMessage.Name = "swfbSendMessage";
+            this.swfbSendMessage.Size = new System.Drawing.Size(75, 32);
+            this.swfbSendMessage.TabIndex = 6;
+            this.swfbSendMessage.Text = "Envoyer";
+            this.swfbSendMessage.UseVisualStyleBackColor = true;
+            this.swfbSendMessage.Click += new System.EventHandler(this.swfbSendMessage_Click);
             // 
             // Form1
             // 
@@ -204,6 +237,7 @@ namespace LifeGame
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.swfdgvDataGrid)).EndInit();
             this.ResumeLayout(false);
 
@@ -223,6 +257,9 @@ namespace LifeGame
         private System.Windows.Forms.DataGridView swfdgvDataGrid;
         private System.Windows.Forms.Button swfbStart;
         private System.Windows.Forms.Button swfbStop;
+        private System.Windows.Forms.Button swfbSendMessage;
+        private System.Windows.Forms.TextBox swftbMessage;
+        private System.Windows.Forms.TextBox swftbChat;
     }
 }
 

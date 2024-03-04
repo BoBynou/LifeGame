@@ -4,7 +4,10 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net;
+using System.Net.Sockets;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -12,9 +15,11 @@ namespace LifeGame
 {
     public partial class Form1 : Form
     {
-        private Timer gameTimer;
+        private System.Windows.Forms.Timer gameTimer;
         private bool isGameRunning = false;
         private readonly Database dbConnection;
+        IPEndPoint ipEndPoint = new IPEndPoint(IPAddress.Loopback, 80);
+
         public Form1()
         {
             InitializeComponent();
@@ -22,12 +27,15 @@ namespace LifeGame
             InitializeEmptyGrid();
         }
 
-        private void swfbConnexion_Click(object sender, EventArgs e)
+        private async void swfbConnexion_Click(object sender, EventArgs e)
         {
             if (dbConnection.ValidateUser(swftbLogin.Text, swftbMDP.Text))
             {
                 tabControl1.SelectedTab = tabPage2;
                 InitializeTimer();
+                StartClient();
+                StartServer();
+
             }
         }
 
@@ -39,7 +47,7 @@ namespace LifeGame
         private void swfbInscription_Click(object sender, EventArgs e)
         {
         }
-
+        #region LifeGame
         private void InitializeEmptyGrid()
         {
             // Remplacez 10 par le nombre de lignes et de colonnes souhaité
@@ -65,7 +73,7 @@ namespace LifeGame
 
         private void InitializeTimer()
         {
-            gameTimer = new Timer();
+            gameTimer = new System.Windows.Forms.Timer();
             gameTimer.Interval = 500;
             gameTimer.Tick += GameTimer_Tick;
         }
@@ -175,7 +183,139 @@ namespace LifeGame
 
             return count;
         }
+        #endregion
+
+        #region Chat
+
+        private TcpListener server;
+
+        private async void StartServer()
+        {
+
+            Socket listener = new Socket(
+                ipEndPoint.AddressFamily,
+                SocketType.Stream,
+                ProtocolType.Tcp);
+
+            listener.Bind(ipEndPoint);
+            listener.Listen(100);
+
+            var handler = await listener.AcceptAsync();
+            while (true)
+            {
+                // Receive message.
+                var buffer = new byte[1_024];
+                SocketAsyncEventArgs test = new SocketAsyncEventArgs();
+                test.SetBuffer(buffer, 0, buffer.Length);
+                var received = handler.ReceiveAsync(test);
+                var response = Encoding.UTF8.GetString(buffer, 0, Convert.ToInt32(received));
+
+                var eom = "<|EOM|>";
+                if (response.IndexOf(eom) > -1 /* is end of message */)
+                {
+                    Console.WriteLine(
+                        $"Socket server received message: \"{response.Replace(eom, "")}\"");
+
+                    var ackMessage = "<|ACK|>";
+                    var echoBytes = Encoding.UTF8.GetBytes(ackMessage);
+                    //await handler.SendAsync(echoBytes, 0);
+                    Console.WriteLine(
+                        $"Socket server sent acknowledgment: \"{ackMessage}\"");
+
+                    break;
+                }
+                // Sample output:
+                //    Socket server received message: "Hi friends 👋!"
+                //    Socket server sent acknowledgment: "<|ACK|>"
+            }
+        }
 
 
+        private async void StartClient()
+        {
+            Socket client = new Socket(
+                ipEndPoint.AddressFamily,
+                SocketType.Stream,
+                ProtocolType.Tcp);
+
+            await client.ConnectAsync(ipEndPoint);
+            _ = Task.Run(async () =>
+            {
+                while (true)
+                {
+                    // Send message.
+                    var message = "titi";
+                    var messageBytes = Encoding.UTF8.GetBytes(message);
+                    SocketAsyncEventArgs test2 = new SocketAsyncEventArgs();
+                    test2.SetBuffer(messageBytes, 0, messageBytes.Length);
+                    //var received = client.ReceiveAsync(test2);
+                    var sended = client.SendAsync(test2);
+                    //Console.WriteLine($"Socket client sent message: \"{message}\"");
+
+                    // Receive ack.
+                    var buffer = new byte[1_024];
+                    SocketAsyncEventArgs test = new SocketAsyncEventArgs();
+                    test.SetBuffer(buffer, 0, buffer.Length);
+                    var received = client.ReceiveAsync(test);
+                    var response = Encoding.UTF8.GetString(buffer, 0, Convert.ToInt32(received));
+                    //Console.WriteLine($"Réponse: \"{response}\"");
+                    // Sample output:
+                    //     Socket client sent message: "Hi friends 👋!<|EOM|>"
+                    //     Socket client received acknowledgment: "<|ACK|>"
+                }
+                client.Shutdown(SocketShutdown.Both);
+            });
+        }
+
+                
+        private void ListenForMessages()
+        {
+            
+            
+            
+        }
+
+
+
+        private void DisplayMessage(string message)
+        {
+            // Affichez le message dans la zone de texte du chat
+            if (swftbChat.InvokeRequired)
+            {
+                swftbChat.Invoke(new Action<string>(DisplayMessage), message);
+            }
+            else
+            {
+                swftbChat.AppendText(message + Environment.NewLine);
+            }
+        }
+
+        private void SendMessage(string message)
+        {
+            try
+            {
+   
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Erreur d'écriture sur la connexion : {ex.Message}");
+                // Gérez la fermeture de la connexion ici
+            }
+        }
+
+
+        private void swfbSendMessage_Click(object sender, EventArgs e)
+        {
+            // Lorsque le bouton d'envoi est cliqué, envoyez le message saisi à l'autre utilisateur
+            
+            string message = swftbMessage.Text;
+
+//            SendMessage(message);
+
+            // Effacez la zone de texte du message après l'envoi
+            swftbMessage.Clear();
+        }
+
+        #endregion
     }
 }
