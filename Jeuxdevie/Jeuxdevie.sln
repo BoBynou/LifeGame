@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34525.116
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jeuxdevie", "Jeuxdevie.csproj", "{2FE0E0E1-277A-4286-91FE-AAA112E9EC28}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Jeuxdevie", "Jeuxdevie.csproj", "{2FE0E0E1-277A-4286-91FE-AAA112E9EC28}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestUnitaireJeux", "..\TestUnitaireJeux\TestUnitaireJeux.csproj", "{30F24FAC-9F45-47B2-9EA3-2F5C2CAEA84E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{2FE0E0E1-277A-4286-91FE-AAA112E9EC28}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2FE0E0E1-277A-4286-91FE-AAA112E9EC28}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2FE0E0E1-277A-4286-91FE-AAA112E9EC28}.Release|Any CPU.Build.0 = Release|Any CPU
+		{30F24FAC-9F45-47B2-9EA3-2F5C2CAEA84E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{30F24FAC-9F45-47B2-9EA3-2F5C2CAEA84E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{30F24FAC-9F45-47B2-9EA3-2F5C2CAEA84E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{30F24FAC-9F45-47B2-9EA3-2F5C2CAEA84E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

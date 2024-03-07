@@ -4,14 +4,14 @@ using System.Text;
 
 namespace Jeuxdevie
 {
-    public partial class k : Form
+    public partial class MainForm : Form
     {
         private System.Windows.Forms.Timer gameTimer;
         private bool isGameRunning = false;
         private readonly Database dbConnection;
         public static ChatClientSocket client;
 
-        public k()
+        public MainForm()
         {
             InitializeComponent();
             dbConnection = new Database();
@@ -28,6 +28,10 @@ namespace Jeuxdevie
                 ChatServerSocket server = new ChatServerSocket(80);
                 server.StartAsync();
                 Services.IniClient();
+            }
+            else
+            {
+                MessageBox.Show("Pas d'accès à la base de donnée \r\nOu identifiants erronés", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -167,6 +171,13 @@ namespace Jeuxdevie
 
             // Effacez la zone de texte du message après l'envoi
             swftbMessage.Clear();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            DataToSend datas = new DataToSend(swfnudKill.Value, swfnudLive.Value, swfnudGridSize.Value);
+            string fullMessage = $"[GridData:{datas}]";
+
         }
     }
 }

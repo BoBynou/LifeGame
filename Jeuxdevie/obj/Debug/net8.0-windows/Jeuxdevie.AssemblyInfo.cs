@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Jeuxdevie")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5abc1b1f0799e4e81f74710809e65c373b3344f2")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+cbc0fa545fcc32b7a16e9c0aee0991299f2123d3")]
 [assembly: System.Reflection.AssemblyProductAttribute("Jeuxdevie")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Jeuxdevie")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

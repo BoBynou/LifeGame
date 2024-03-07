@@ -1,6 +1,6 @@
 ﻿namespace Jeuxdevie
 {
-    partial class k
+    partial class MainForm
     {
         /// <summary>
         ///  Required designer variable.
@@ -30,6 +30,7 @@
         {
             tabControl1 = new TabControl();
             tabPage1 = new TabPage();
+            swfbInscription = new Button();
             swfbConnexion = new Button();
             swftbMDP = new TextBox();
             swftbLogin = new TextBox();
@@ -48,7 +49,7 @@
             swftbMessage = new TextBox();
             swftbChat = new TextBox();
             swfdgvDataGrid = new DataGridView();
-            swfbInscription = new Button();
+            button1 = new Button();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             tabPage2.SuspendLayout();
@@ -84,6 +85,17 @@
             tabPage1.TabIndex = 0;
             tabPage1.Text = "tabPage1";
             tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // swfbInscription
+            // 
+            swfbInscription.Anchor = AnchorStyles.Top;
+            swfbInscription.Location = new Point(1173, 349);
+            swfbInscription.Name = "swfbInscription";
+            swfbInscription.Size = new Size(121, 55);
+            swfbInscription.TabIndex = 5;
+            swfbInscription.Text = "Inscription";
+            swfbInscription.UseVisualStyleBackColor = true;
+            swfbInscription.Click += swfbInscription_Click;
             // 
             // swfbConnexion
             // 
@@ -135,6 +147,7 @@
             // 
             // tabPage2
             // 
+            tabPage2.Controls.Add(button1);
             tabPage2.Controls.Add(label5);
             tabPage2.Controls.Add(swfnudLive);
             tabPage2.Controls.Add(label4);
@@ -271,16 +284,15 @@
             swfdgvDataGrid.TabIndex = 0;
             swfdgvDataGrid.CellClick += swfdgvDataGrid_CellClick;
             // 
-            // swfbInscription
+            // button1
             // 
-            swfbInscription.Anchor = AnchorStyles.Top;
-            swfbInscription.Location = new Point(1173, 349);
-            swfbInscription.Name = "swfbInscription";
-            swfbInscription.Size = new Size(121, 55);
-            swfbInscription.TabIndex = 5;
-            swfbInscription.Text = "Inscription";
-            swfbInscription.UseVisualStyleBackColor = true;
-            swfbInscription.Click += swfbInscription_Click;
+            button1.Location = new Point(277, 565);
+            button1.Name = "button1";
+            button1.Size = new Size(45, 29);
+            button1.TabIndex = 12;
+            button1.Text = "Ask";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
             // 
             // k
             // 
@@ -325,5 +337,6 @@
         private NumericUpDown swfnudKill;
         private NumericUpDown swfnudGridSize;
         private Button swfbInscription;
+        private Button button1;
     }
 }

@@ -29,4 +29,4 @@ C:\Users\boblo\OneDrive\Bureau\Nouveau dossier\Jeux de la vie\Jeuxdevie\bin\Debu
 C:\Users\boblo\OneDrive\Bureau\Nouveau dossier\Jeux de la vie\Jeuxdevie\bin\Debug\net8.0-windows\runtimes\win-x64\native\krb5_64.dll
 C:\Users\boblo\OneDrive\Bureau\Nouveau dossier\Jeux de la vie\Jeuxdevie\bin\Debug\net8.0-windows\runtimes\win-x64\native\krbcc64.dll
 C:\Users\boblo\OneDrive\Bureau\Nouveau dossier\Jeux de la vie\Jeuxdevie\obj\Debug\net8.0-windows\Jeuxdevie.csproj.CopyComplete
-C:\Users\boblo\OneDrive\Bureau\Nouveau dossier\Jeux de la vie\Jeuxdevie\obj\Debug\net8.0-windows\Jeuxdevie.k.resources
+C:\Users\boblo\OneDrive\Bureau\Nouveau dossier\Jeux de la vie\Jeuxdevie\obj\Debug\net8.0-windows\Jeuxdevie.MainForm.resources
